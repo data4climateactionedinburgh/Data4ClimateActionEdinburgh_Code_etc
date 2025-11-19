@@ -30,6 +30,22 @@ Open Government Licence
 
 The provider column in the data states "City of Edinburgh Council" for all rows. 
 
+
+## CYCLING: City of Edinburgh Council - Daily cycling counts from automatic cycling counters
+
+https://usmart.io/org/cyclingscotland/discovery/discovery-view-detail/b1f0bd42-e220-465e-99a3-c4f62824f21f 
+
+### Description
+A real-time daily upload from each cycling counter within City of Edinburgh Council's network.
+### Additional Information
+The cycling counts supplied is raw, uncleaned data. Extended counts of zero, or unusually high counts, may be due to a malfunctioning counter. Data consumers must decide whether counts are genuine and suitable for use.
+### Themes
+Transport / Mobility
+### Point of Contact
+Cycling Scotland Monitoring
+### Licence
+Open Government Licence
+
 The sixty counters' locations are: 
 > # Where are the counters? 
 > unique(CEC_daily_cycling_COD_alldates[["location"]])
@@ -63,18 +79,3 @@ The sixty counters' locations are:
 [55] "Cramond Brigg"                            "Carrick Knowe Golf Course (Dial-Up CA)"  
 [57] "Innocent Railway Bridge(Dial-Up CA)"      "Union Canal - Wester Hailes"             
 [59] "Portobello Prom (Dial-Up CA)"             "Wester Coates"   
-
-## CYCLING: City of Edinburgh Council - Daily cycling counts from automatic cycling counters
-
-https://usmart.io/org/cyclingscotland/discovery/discovery-view-detail/b1f0bd42-e220-465e-99a3-c4f62824f21f 
-
-### Description
-A real-time daily upload from each cycling counter within City of Edinburgh Council's network.
-### Additional Information
-The cycling counts supplied is raw, uncleaned data. Extended counts of zero, or unusually high counts, may be due to a malfunctioning counter. Data consumers must decide whether counts are genuine and suitable for use.
-### Themes
-Transport / Mobility
-### Point of Contact
-Cycling Scotland Monitoring
-### Licence
-Open Government Licence
