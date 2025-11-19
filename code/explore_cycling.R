@@ -20,3 +20,5 @@ summary(cycling_data["endTime"])
 # Data goes back to Jan 2016.
 
 str(cycling_data)
+unique(cycling_data$class)
+# "cycle"
