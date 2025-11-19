@@ -12,6 +12,7 @@ Slightly non-intuitive process:
 * Clicked the dataset button to downloaded the CSV file, took under two minutes for the website to make the data ready. 
 * Used the website download feature, top right-hand corner white download icon, then in the menu that opens, click blue download icon to actually get the file to download.  
 
+Point to note: while the cycling and walking data are presented as totally separate datasets, on examining the columns in the two files, they have identical column headings (field names) and appear to be of the same data types. The files differ in the values in the column 'class' (class is "pedestrian" in the walking data, and "cyclist" in the cycling data). 
 
 ## WALKING: City of Edinburgh Council - Daily *WALKING* counts from automatic cycling counters
    
@@ -29,6 +30,67 @@ Paths for All Data
 Open Government Licence
 
 The provider column in the data states "City of Edinburgh Council" for all rows. 
+
+ 1 Roseburn Path                           
+ 2 Cultins Road (Dial-Up CA)               
+ 3 Nicolson Street                         
+ 4 Inverleith Park                         
+ 5 Middle Meadow Walk (Dial-Up CA)         
+ 6 Fishwives Causeway                      
+ 7 A8 Corstorphine Road                    
+ 8 Raeburn Place                           
+ 9 Spylaw Park                             
+10 Peffermill Road (Dial-Up CA)            
+11 Inverleith Row                          
+12 Shawfair                                
+13 Wester Coates                           
+14 Innocent Railway Bridge(Dial-Up CA)     
+15 Mayfield Road Northbound                
+16 Portobello Prom (Dial-Up CA)            
+17 Straiton Path                           
+18 Steadfast Gate                          
+19 Blacket Avenue                          
+20 A8 Wester Coates                        
+21 Melville Drive Link                     
+22 Little France ELGT                      
+23 Crewe Road South                        
+24 Silverknowes (Dial-Up CA)               
+25 Portobello Promenade                    
+26 Stenhouse Drive                         
+27 Cramond Brigg                           
+28 Dundee Street                           
+29 Carrington Road Westbound               
+30 North Edinburgh Access Road (Dial-Up CA)
+31 Carrington Road Eastbound               
+32 Hawkhill Avenue (Dial-Up CA)            
+33 Seafield Street (Dial-Up CA)            
+34 Dalry Road                              
+35 Blackhall (Dial-Up CA)                  
+36 Forth Road Bridge (Dial-Up CA)          
+37 London Road                             
+38 Harrison Park                           
+39 Queensferry - Dalmeny (Dial-Up CA)      
+40 RBS Gogar (Dial-Up CA)                  
+41 Carrick Knowe Golf Course (Dial-Up CA)  
+42 A90 Deans Bridge                        
+43 Old Dalkeith Road                       
+44 Union Canal - Wester Hailes             
+45 Morrison Street                         
+46 Water of Leith                          
+47 Whitehouse Loan                         
+48 Gilmerton Road                          
+49 Melville Drive Main Path                
+50 ELGT Little France South                
+51 Gilmerton Station Road                  
+52 Roseburn Park                           
+53 Mayfield Road Southbound                
+54 Melville Drive Northbound               
+55 North Meadow Walk, Main Path            
+56 Bruntsfield Place Northbound            
+57 Melville Drive Southbound               
+58 Bruntsfield Place Southbound            
+59 North Meadow Walk, Link                 
+60 Rodney Street Tunnel   
 
 
 ## CYCLING: City of Edinburgh Council - Daily cycling counts from automatic cycling counters

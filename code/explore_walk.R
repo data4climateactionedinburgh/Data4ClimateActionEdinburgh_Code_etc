@@ -10,3 +10,16 @@ walkg_data_file <- here(
   "CEC_daily_walking_COD_alldates_allsites_8d227f3f-9478-4524-886c-f8eb2dcd4834.csv"
 )
 walking_data <- read_csv(walkg_data_file)
+
+# What are the locations of the counters?
+unique(walking_data["location"]) |>
+  print(n = 2000)
+# sixty counters, very, very similar to cycling counters
+
+# read_csv is guessing endTime to be a timestamp, so I don't need to set that.
+summary(walking_data["endTime"])
+# Data goes back to Jan 2016.
+
+#broken
+# # str(walking_data) |>
+# write_lines(str(walking_data), here(data_folder, "walking", "structr_walkin_data.txt"))
