@@ -50,7 +50,7 @@ aggreg_edinburgh_rainfall <- monthly_rainfiles |>
 mean_rows <- aggreg_edinburgh_rainfall |>
     group_by(Timestamp) |>
     summarise(
-        rainfall_in_mm <- mean(rainfall_in_mm, na.rm = TRUE),
+        rainfall_in_mm = mean(rainfall_in_mm, na.rm = TRUE),
         .groups = "drop"
     ) |>
     mutate(rain_station = "Edinburgh average")
