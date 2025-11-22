@@ -26,15 +26,42 @@ monthly_rainfiles <- list.files(
     full.names = TRUE
 )
 
-# rainfiles <- tibble(
-#     "filename" = list.files(here("data", "rainfall", full.names = TRUE))
-# ) |>
-#     filter(str_detect(filename, "\\.csv"))
+daily_rainfiles <- list.files(
+    path = rainfall_path,
+    pattern = "daily.*\\.csv$",
+    full.names = TRUE
+)
 
-# monthly_rainfiles <- rainfiles |>
-#     filter(str_detect(filename, "monthly"))
+## MONTHLY
+aggreg_rainfall_mthly <- monthly_rainfiles |>
+    map_dfr(
+        ~ {
+            file_name <- basename(.x)
+            rain_station <- str_extract(file_name, "^[:alpha:]+(?=_)")
+            read_csv(.x) |>
+                rename("rainfall_in_mm" = Value) |>
 
-aggreg_edinburgh_rainfall <- monthly_rainfiles |>
+                mutate(
+                    rain_station = rain_station
+                )
+        }
+    )
+
+mean_rows_mthly <- aggreg_rainfall_mthly |>
+    group_by(Timestamp) |>
+    summarise(
+        rainfall_in_mm = round_half_up(
+            mean(rainfall_in_mm, na.rm = TRUE),
+            digits = 2
+        ),
+        .groups = "drop"
+    ) |>
+    mutate(rain_station = "Edinburgh average")
+
+
+## DAILY
+
+aggreg_edinburgh_rainfall <- daily_rainfiles |>
     map_dfr(
         ~ {
             file_name <- basename(.x)
@@ -59,10 +86,14 @@ mean_rows <- aggreg_edinburgh_rainfall |>
     ) |>
     mutate(rain_station = "Edinburgh average")
 
+## BRING IT ALL TOGETHER
 aggreg_edinburgh_rainfall <- bind_rows(mean_rows, aggreg_edinburgh_rainfall)
 
+# To be added after troubleshooting - bind in the monthly rows too perhaps
 
 write_csv(
     aggreg_edinburgh_rainfall,
     here(rainfall_path, "aggreg_edinburgh_rainfall.csv")
 )
+
+# Potentially write out a separate file for monthly data
