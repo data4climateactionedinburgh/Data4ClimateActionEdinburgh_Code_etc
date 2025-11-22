@@ -13,8 +13,7 @@ Edin_stations <- read_csv(
         "data",
         "rainfall",
         "rain_stations_edinburgh.csv"
-    ),
-    col_type = list(.default = col_character())
+    )
 )
 
 aggreg_edinburgh_rainfall <- tibble()
