@@ -80,7 +80,7 @@ mean_rows <- aggreg_edinburgh_rainfall |>
     summarise(
         rainfall_in_mm = round_half_up(
             mean(rainfall_in_mm, na.rm = TRUE),
-            digits = 2
+            digits = 1
         ),
         .groups = "drop"
     ) |>
@@ -93,7 +93,8 @@ aggreg_edinburgh_rainfall <- bind_rows(mean_rows, aggreg_edinburgh_rainfall)
 
 write_csv(
     aggreg_edinburgh_rainfall,
-    here(rainfall_path, "aggreg_edinburgh_rainfall.csv")
+    here(rainfall_path, "aggreg_edinburgh_rainfall.csv"),
+    quote = "all"
 )
 
 # Potentially write out a separate file for monthly data
