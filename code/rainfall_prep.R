@@ -37,8 +37,18 @@ aggreg_edinburgh_rainfall <- monthly_rainfiles |>
     map_dfr(
         ~ {
             file_name <- basename(.x)
-            rain_station <- str_extract(file_name, "^[:alpha:]+_")
+            rain_station <- str_extract(file_name, "^[:alpha:]+(?=_)")
             read_csv(.x) |>
-                mutate(rain_station = rain_station)
-        },
+                rename("rainfall_in_mm" = Value) |>
+
+                mutate(
+                    rain_station = rain_station
+                )
+        }
     )
+
+
+write_csv(
+    aggreg_edinburgh_rainfall,
+    here(rainfall_path, "aggreg_edinburgh_rainfall.csv")
+)
