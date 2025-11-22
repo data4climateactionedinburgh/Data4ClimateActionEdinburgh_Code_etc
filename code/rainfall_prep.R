@@ -2,6 +2,7 @@
 
 library(tidyverse)
 library(here)
+library(janitor)
 
 # SEPA API allows download in this form:
 # {baseurl}/api/Daily/{id}?csv=true&all=true
@@ -50,7 +51,10 @@ aggreg_edinburgh_rainfall <- monthly_rainfiles |>
 mean_rows <- aggreg_edinburgh_rainfall |>
     group_by(Timestamp) |>
     summarise(
-        rainfall_in_mm = mean(rainfall_in_mm, na.rm = TRUE),
+        rainfall_in_mm = round_half_up(
+            mean(rainfall_in_mm, na.rm = TRUE),
+            digits = 2
+        ),
         .groups = "drop"
     ) |>
     mutate(rain_station = "Edinburgh average")
