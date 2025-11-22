@@ -23,3 +23,8 @@ rainfiles <- tibble("filename" = list.files(here("data", "rainfall"))) |>
 
 monthly_rainfiles <- rainfiles |>
     filter(str_detect(filename, "monthly"))
+
+#aggreg_edinburgh_rainfall <- map(monthly_rainfiles,
+#    read_csv(here("data", "rainfall", )))
+
+#function import_rain
