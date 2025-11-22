@@ -17,14 +17,28 @@ Edin_stations <- read_csv(
 )
 
 aggreg_edinburgh_rainfall <- tibble()
+rainfall_path <- here("data", "rainfall")
 
-rainfiles <- tibble("filename" = list.files(here("data", "rainfall"))) |>
-    filter(str_detect(filename, "\\.csv"))
+monthly_rainfiles <- list.files(
+    path = rainfall_path,
+    pattern = "monthly.*\\.csv$",
+    full.names = TRUE
+)
 
-monthly_rainfiles <- rainfiles |>
-    filter(str_detect(filename, "monthly"))
+# rainfiles <- tibble(
+#     "filename" = list.files(here("data", "rainfall", full.names = TRUE))
+# ) |>
+#     filter(str_detect(filename, "\\.csv"))
 
-#aggreg_edinburgh_rainfall <- map(monthly_rainfiles,
-#    read_csv(here("data", "rainfall", )))
+# monthly_rainfiles <- rainfiles |>
+#     filter(str_detect(filename, "monthly"))
 
-#function import_rain
+aggreg_edinburgh_rainfall <- monthly_rainfiles |>
+    map_dfr(
+        ~ {
+            file_name <- basename(.x)
+            rain_station <- str_extract(file_name, "^[:alpha:]+_")
+            read_csv(.x) |>
+                mutate(rain_station = rain_station)
+        },
+    )
