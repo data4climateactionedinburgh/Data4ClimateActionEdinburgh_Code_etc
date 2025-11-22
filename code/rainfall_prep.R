@@ -47,6 +47,16 @@ aggreg_edinburgh_rainfall <- monthly_rainfiles |>
         }
     )
 
+mean_rows <- aggreg_edinburgh_rainfall |>
+    group_by(Timestamp) |>
+    summarise(
+        rainfall_in_mm <- mean(rainfall_in_mm, na.rm = TRUE),
+        .groups = "drop"
+    ) |>
+    mutate(rain_station = "Edinburgh average")
+
+aggreg_edinburgh_rainfall <- bind_rows(mean_rows, aggreg_edinburgh_rainfall)
+
 
 write_csv(
     aggreg_edinburgh_rainfall,
