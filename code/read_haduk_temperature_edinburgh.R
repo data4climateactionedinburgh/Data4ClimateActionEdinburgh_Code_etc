@@ -205,7 +205,8 @@ if (nrow(daily_combined) > 0) {
 
   # Try to fix bug from list or matrix column apparently col 1 ie date
   daily_combined <- daily_combined |>
-    mutate(reading_date = as.POSIXct(date))
+    mutate(date = map_chr(date, as.character())) |>
+    mutate(date = as.POSIXct(date))
 
   write_csv(daily_combined, here("edinburgh_daily_temps_point.csv"))
   message(
