@@ -200,8 +200,12 @@ daily_combined <- bind_rows(
 
 if (nrow(daily_combined) > 0) {
   # Convert any list-columns to character to avoid write_csv errors
-  daily_combined <- daily_combined %>%
+  daily_combined <- daily_combined |>
     mutate(across(where(is.list), as.character))
+
+  # Try to fix bug from list or matrix column apparently col 1 ie date
+  daily_combined <- daily_combined |>
+    mutate(reading_date = as.POSIXct(date))
 
   write_csv(daily_combined, here("edinburgh_daily_temps_point.csv"))
   message(
