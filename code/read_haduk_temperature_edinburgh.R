@@ -210,7 +210,10 @@ if (nrow(daily_combined) > 0) {
     mutate(date = map_chr(date, ~ as.character(.x))) |>
     mutate(date = as.POSIXct(date))
 
-  write_csv(daily_combined, here("edinburgh_daily_temps_point.csv"))
+  write_csv(
+    daily_combined,
+    here("data", "temperature", "edinburgh_daily_temps_point.csv")
+  )
   message(
     "Saved edinburgh_daily_temps_point.csv with ",
     nrow(daily_combined),
@@ -222,7 +225,16 @@ if (nrow(ts_mon) > 0) {
   ts_mon <- ts_mon %>%
     mutate(across(where(is.list), as.character))
 
-  write_csv(ts_mon, here("edinburgh_monthly_mean_temps_point.csv"))
+  # Try to avoid bug from list or matrix column apparently col 1 ie date
+  ts_mon <- ts_mon |>
+    # use anonymous function designated by "~"
+    mutate(date = map_chr(date, ~ as.character(.x))) |>
+    mutate(date = as.POSIXct(date))
+
+  write_csv(
+    ts_mon,
+    here("data", "temperature", "edinburgh_monthly_mean_temps_point.csv")
+  )
   message(
     "Saved edinburgh_monthly_mean_temps_point.csv with ",
     nrow(ts_mon),
