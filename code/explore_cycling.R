@@ -29,8 +29,8 @@ cycling_data <- cycling_data |>
 
 
 cycling_to_plot <- cycling_data |>
-  group_by(endTime) |>
-  summarise(day_total = sum(bikeCount))
+  group_by(date_of_count) |>
+  summarise(day_total = sum(bike_count))
 
 
 simple_line_plot_cyc <- cycling_to_plot
