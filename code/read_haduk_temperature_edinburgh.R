@@ -157,7 +157,7 @@ daily_max_files <- list.files(
 )
 writeLines(
   daily_max_files,
-  here("data", "temperature", "list_of_daily_max_files.txt")
+  here(data_dir, "list_of_daily_max_files.txt")
 )
 
 daily_min_files <- list.files(
@@ -167,7 +167,7 @@ daily_min_files <- list.files(
 )
 writeLines(
   daily_min_files,
-  here("data", "temperature", "list_of_daily_min_files.txt")
+  here(data_dir, "list_of_daily_min_files.txt")
 )
 
 
@@ -175,6 +175,10 @@ monthly_mean_files <- list.files(
   data_dir,
   pattern = "tas_hadukgrid_uk_1km_mon.*\\.nc$",
   full.names = TRUE
+)
+writeLines(
+  monthly_mean_files,
+  here(data_dir, "list_of_monthly_mean_files.txt")
 )
 
 # Helper to loop and bind
