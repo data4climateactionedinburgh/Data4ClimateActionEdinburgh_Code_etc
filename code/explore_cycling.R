@@ -44,8 +44,9 @@ sample_data <-
   filter(str_detect(location, str_c(test_locations, collapse = "|"))) #|>
 # select(date_of_count, bike_count)
 
+str(sample_data)
 View(sample_data)
-
+plot(sample_data |> select(date_of_count, bike_count))
 
 cycling_grouped <- cycling_data |>
   group_by(date_of_count) |>
@@ -56,7 +57,13 @@ cycling_grouped <- cycling_data |>
 
 plot(cycling_grouped)
 
+# Get rid of those where withinExpectedLimits = FALSE
+cycling_cleaned <- cycling_data |>
+  filter(!withinExpectedLimits) |>
+  group_by(date_of_count) |>
+  summarise(day_total = sum(bike_count))
 
-# Check that dates are unique for each counter?
+# group_by date yields a tibble of 3,595 rows,
+# ie sixty rows for each date, perhaps corresponding to 60 counters.
 
-simple_line_plot_cyc <- cycling_to_plot
+plot(cycling_cleaned)
