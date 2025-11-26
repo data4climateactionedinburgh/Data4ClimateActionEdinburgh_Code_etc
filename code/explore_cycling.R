@@ -59,7 +59,7 @@ plot(cycling_grouped)
 
 # Get rid of those where withinExpectedLimits = FALSE
 cycling_cleaned <- cycling_data |>
-  filter(!withinExpectedLimits) |>
+  filter(withinExpectedLimits) |>
   group_by(date_of_count) |>
   summarise(day_total = sum(bike_count))
 
