@@ -22,15 +22,34 @@ summary(cycling_data["endTime"])
 str(cycling_data)
 unique(cycling_data$class)
 # "cycle"
+unique(cycling_data$update)
 
 cycling_data <- cycling_data |>
   rename(bike_count = count) |>
   mutate(date_of_count = as.Date(endTime))
 
 
+plot(cycling_data)
+
 cycling_to_plot <- cycling_data |>
   group_by(date_of_count) |>
   summarise(day_total = sum(bike_count))
 
+# group_by date yields a tibble of 3,595 rows,
+# ie sixty rows for each date, perhaps corresponding to 60 counters.
+
+# Spot-test: try counters for
+#
+test_locations <- c(
+  "Stenhouse",
+  "Blacket",
+  "Innocent",
+  "Meadow",
+  "Hawkhill",
+  "Harrison"
+)
+
+
+# Check that dates are unique for each counter?
 
 simple_line_plot_cyc <- cycling_to_plot
