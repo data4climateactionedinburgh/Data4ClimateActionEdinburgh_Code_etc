@@ -28,16 +28,6 @@ cycling_data <- cycling_data |>
   rename(bike_count = count) |>
   mutate(date_of_count = as.Date(endTime))
 
-
-plot(cycling_data)
-
-cycling_to_plot <- cycling_data |>
-  group_by(date_of_count) |>
-  summarise(day_total = sum(bike_count))
-
-# group_by date yields a tibble of 3,595 rows,
-# ie sixty rows for each date, perhaps corresponding to 60 counters.
-
 # Spot-test: try counters for
 #
 test_locations <- c(
@@ -48,6 +38,23 @@ test_locations <- c(
   "Hawkhill",
   "Harrison"
 )
+
+sample_data <-
+  cycling_data |>
+  filter(str_detect(location, str_c(test_locations, collapse = "|"))) #|>
+# select(date_of_count, bike_count)
+
+View(sample_data)
+
+
+cycling_grouped <- cycling_data |>
+  group_by(date_of_count) |>
+  summarise(day_total = sum(bike_count))
+
+# group_by date yields a tibble of 3,595 rows,
+# ie sixty rows for each date, perhaps corresponding to 60 counters.
+
+plot(cycling_grouped)
 
 
 # Check that dates are unique for each counter?
