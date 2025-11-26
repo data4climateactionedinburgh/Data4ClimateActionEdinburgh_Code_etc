@@ -12,6 +12,8 @@ library(lubridate)
 # CONFIG ####
 # local folder for big data
 data_dir <- here("..", "local_data", "netcdf_files")
+# For details on how to do bulk download from CEDA, see:
+# https://help.ceda.ac.uk/article/5191-downloading-multiple-files-with-wget
 
 # Choose a City of Edinburgh coordinate (change if you prefer a different point)
 # This script uses a city-centre coordinate for Edinburgh:
@@ -153,11 +155,22 @@ daily_max_files <- list.files(
   pattern = "tasmax_hadukgrid_uk_1km_day.*\\.nc$",
   full.names = TRUE
 )
+writeLines(
+  daily_max_files,
+  here("data", "temperature", "list_of_daily_max_files.txt")
+)
+
 daily_min_files <- list.files(
   data_dir,
   pattern = "tasmin_hadukgrid_uk_1km_day.*\\.nc$",
   full.names = TRUE
 )
+writeLines(
+  daily_min_files,
+  here("data", "temperature", "list_of_daily_min_files.txt")
+)
+
+
 monthly_mean_files <- list.files(
   data_dir,
   pattern = "tas_hadukgrid_uk_1km_mon.*\\.nc$",
