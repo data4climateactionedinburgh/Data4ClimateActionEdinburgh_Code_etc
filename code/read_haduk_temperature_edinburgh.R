@@ -329,3 +329,7 @@ if (nrow(daily_combined) > 0) {
 message(
   "Done. If plotted in non-interactive session, save plots manually with ggsave()."
 )
+
+## Get more monthly files tasmin
+# https://help.ceda.ac.uk/article/5100-archive-access-tokens
+# wget -e robots=off --mirror --no-parent -r https://dap.ceda.ac.uk/badc/ukmo-hadobs/data/insitu/MOHC/HadOBS/HadUK-Grid/v1.3.1.ceda/1km/tasmin/mon/v20250415/
