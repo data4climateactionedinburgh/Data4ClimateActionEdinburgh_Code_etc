@@ -17,25 +17,9 @@ cycling_data <- read_csv(cyc_data_file)
 # Need to keep 'class' with values 'cycle' and 'pedestrian'
 # Need to keep endTime and startTime, as the dashboard widgets use these to filter data
 
-cycling_grouped <- cycling_data |>
-  group_by(date_of_count) |>
-  summarise(day_total = sum(bike_count))
-
-# group_by date yields a tibble of 3,595 rows,
-# ie sixty rows for each date, perhaps corresponding to 60 counters.
-
-plot(cycling_grouped)
-
 # Get rid of those where withinExpectedLimits = FALSE
 cycling_cleaned <- cycling_data |>
-  filter(withinExpectedLimits) |>
-  group_by(date_of_count) |>
-  summarise(day_total = sum(bike_count))
-
-# group_by date yields a tibble of 3,595 rows,
-# ie sixty rows for each date, perhaps corresponding to 60 counters.
-
-plot(cycling_cleaned)
+  filter(withinExpectedLimits)
 
 # For D4CAE Dashboard, need to
 # combine cleaned cycling with walking data.
