@@ -67,3 +67,8 @@ cycling_cleaned <- cycling_data |>
 # ie sixty rows for each date, perhaps corresponding to 60 counters.
 
 plot(cycling_cleaned)
+
+# For D4CAE Dashboard, need to
+# combine cleaned cycling with walking data.
+# Columns are identical, so we can use rbind().
+# And convert to rda.
