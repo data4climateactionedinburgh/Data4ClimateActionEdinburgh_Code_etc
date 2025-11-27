@@ -14,10 +14,8 @@ cyc_data_file <- here(
 cycling_data <- read_csv(cyc_data_file)
 
 # Need to keep the column name "count" since that is what the dashboard looks for.
-
-cycling_data <- cycling_data |>
-  mutate(date_of_count = as.Date(endTime))
-
+# Need to keep 'class' with values 'cycle' and 'pedestrian'
+# Need to keep endTime and startTime, as the dashboard widgets use these to filter data
 
 cycling_grouped <- cycling_data |>
   group_by(date_of_count) |>
