@@ -27,5 +27,4 @@ unique(walking_data$update)
 # summarise daily total = sum of count
 
 walking_data |>
-  filter(withinExpectedLimits) |>
-  summarise(group_by())
+  filter(withinExpectedLimits)

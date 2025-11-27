@@ -25,3 +25,13 @@ cycling_cleaned <- cycling_data |>
 # combine cleaned cycling with walking data.
 # Columns are identical, so we can use rbind().
 # And convert to rda.
+
+walkg_data_file <- here(
+  data_folder,
+  "walking",
+  "CEC_daily_walking_COD_alldates_allsites_8d227f3f-9478-4524-886c-f8eb2dcd4834.csv"
+)
+walking_data <- read_csv(walkg_data_file)
+
+walking_cleaned <- walking_data |>
+  filter(withinExpectedLimits)
