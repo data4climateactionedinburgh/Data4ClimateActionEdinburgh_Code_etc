@@ -21,6 +21,8 @@ cycling_data <- read_csv(cyc_data_file)
 cycling_cleaned <- cycling_data |>
   filter(withinExpectedLimits)
 
+# str(cycling_cleaned)
+
 # For D4CAE Dashboard, need to
 # combine cleaned cycling with walking data.
 # Columns are identical, so we can use rbind().
@@ -35,3 +37,10 @@ walking_data <- read_csv(walkg_data_file)
 
 walking_cleaned <- walking_data |>
   filter(withinExpectedLimits)
+
+# str(walking_cleaned)
+
+# Dashboard reads data file called cyc_ped_data.rda
+# so prep output should be cyc_ped_.csv
+# then call usethis::use_data() to convert.
+cyc_ped_data <- rbind(cycling_cleaned, walking_cleaned)
