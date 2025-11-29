@@ -41,6 +41,7 @@ walking_cleaned <- walking_data |>
 # str(walking_cleaned)
 
 # Dashboard reads data file called cyc_ped_data.rda
-# so prep output should be cyc_ped_.csv
+# so prep output should be cyc_ped_data.csv
 # then call usethis::use_data() to convert.
 cyc_ped_data <- rbind(cycling_cleaned, walking_cleaned)
+write_csv(cyc_ped_data, here(data_folder, "cycling", "cyc_ped_data.csv"))
