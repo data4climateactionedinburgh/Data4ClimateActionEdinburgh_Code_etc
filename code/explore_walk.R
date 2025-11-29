@@ -20,6 +20,11 @@ unique(walking_data["location"]) |>
 summary(walking_data["endTime"])
 # Data goes back to Jan 2016.
 
-#broken
-# # str(walking_data) |>
-# write_lines(str(walking_data), here(data_folder, "walking", "structr_walkin_data.txt"))
+unique(walking_data$update)
+
+# Check column names.
+# Then group by date of count , pipe to
+# summarise daily total = sum of count
+
+walking_data |>
+  filter(withinExpectedLimits)
