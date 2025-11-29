@@ -102,4 +102,4 @@ write_csv(
     quote = "all"
 )
 
-# Potentially write out a separate file for monthly data
+# Potentially write out a separate file for daily data
