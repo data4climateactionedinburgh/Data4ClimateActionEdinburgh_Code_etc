@@ -57,6 +57,7 @@ mean_rows_mthly <- aggreg_rainfall_mthly |>
     ) |>
     mutate(rain_station = "Edinburgh average")
 
+monthly_aggreg <- rbind(aggreg_rainfall_mthly, mean_rows_mthly)
 
 ## DAILY
 
@@ -85,10 +86,15 @@ mean_rows <- aggreg_edinburgh_rainfall |>
     ) |>
     mutate(rain_station = "Edinburgh average")
 
-## BRING IT ALL TOGETHER
-aggreg_edinburgh_rainfall <- bind_rows(mean_rows, aggreg_edinburgh_rainfall)
+## Daily data - BRING IT ALL TOGETHER
+daily_aggreg_edinburgh_rainfall <- bind_rows(
+    mean_rows,
+    aggreg_edinburgh_rainfall
+)
 
-# To be added after troubleshooting - bind in the monthly rows too perhaps
+## Put the monthly or daily data or both into the ultimate tibble
+## For now, just monthly
+aggreg_edinburgh_rainfall <- monthly_aggreg
 
 write_csv(
     aggreg_edinburgh_rainfall,
