@@ -25,6 +25,18 @@ Edin_stations <- read_csv(
 aggreg_edinburgh_rainfall <- tibble()
 rainfall_path <- here("data", "rainfall")
 
+# Download the monthly rainfiles
+sepa_base_url <- "https://www2.sepa.org.uk/rainfall"
+rain_csvs_urls <- str_c(
+    sepa_base_url,
+    "/api/Month/",
+    Edin_stations[["SEPA_id"]],
+    "?csv=true&all=true"
+)
+
+# need to add default destfile value
+curl::curl_download(rain_csvs_urls)
+
 monthly_rainfiles <- list.files(
     path = rainfall_path,
     pattern = "monthly.*\\.csv$",
