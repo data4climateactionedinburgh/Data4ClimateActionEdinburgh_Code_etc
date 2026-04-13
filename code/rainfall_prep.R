@@ -35,8 +35,14 @@ rain_csvs_urls <- str_c(
     "?csv=true&all=true"
 )
 
-# need to add default destfile value
-multi_download(rain_csvs_urls, path = rainfall_path)
+# Extract the station IDs to use as filenames
+destfiles <- file.path(
+    rainfall_path,
+    str_c("monthly_", Edin_stations[["SEPA_id"]], ".csv")
+)
+
+# Download to specified directory
+multi_download(rain_csvs_urls, destfile = destfiles)
 
 monthly_rainfiles <- list.files(
     path = rainfall_path,
