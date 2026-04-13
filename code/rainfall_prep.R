@@ -4,10 +4,6 @@ library(tidyverse)
 library(here)
 library(janitor)
 
-# SEPA API allows download in this form:
-# {baseurl}/api/Daily/{id}?csv=true&all=true
-# CSV : {baseurl}/api/Daily/{id}?csv=true&all=true
-
 Edin_stations <- read_csv(
     here(
         "data",
@@ -15,6 +11,16 @@ Edin_stations <- read_csv(
         "rain_stations_edinburgh.csv"
     )
 )
+
+# SEPA API allows download in this form:
+# {baseurl}/api/Daily/{id}?csv=true&all=true
+# CSV daily: {baseurl}/api/Daily/{id}?csv=true&all=true
+# 12-month monthly:  {baseurl}/api/Month/{id}?csv=true&all=true
+#
+# Here, baseurl is https://www2.sepa.org.uk/rainfall .
+# ... and for id, use the column Edin_stations[SEPA_id].
+# https://www2.sepa.org.uk/rainfall/api/Daily/{id}?csv=true&all=true
+# https://www2.sepa.org.uk/rainfall/api/Month/{id}?csv=true&all=true
 
 aggreg_edinburgh_rainfall <- tibble()
 rainfall_path <- here("data", "rainfall")

@@ -10,7 +10,9 @@ Periodicity: both daily and monthly datasets
 Download method: Not yet automated, still manual download. The files can be found by clicking on the "Stations" tab at the top of the map. 
 
 However, SEPA's API allows the files to be accessed with this formula: 
-{baseurl}/api/Daily/{id}?csv=true&all=true
+{baseurl}/api/Daily/{id}?csv=true&all=true 
+
+... where the baseurl is also: "https://www2.sepa.org.uk/rainfall". 
 
 Rain stations' names are in: 
 "rain_stations_edinburgh.csv" 
