@@ -3,6 +3,7 @@
 library(tidyverse)
 library(here)
 library(janitor)
+library(curl)
 
 Edin_stations <- read_csv(
     here(
@@ -35,7 +36,7 @@ rain_csvs_urls <- str_c(
 )
 
 # need to add default destfile value
-curl::curl_download(rain_csvs_urls)
+multi_download(rain_csvs_urls, path = rainfall_path)
 
 monthly_rainfiles <- list.files(
     path = rainfall_path,
