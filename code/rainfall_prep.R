@@ -27,6 +27,7 @@ aggreg_edinburgh_rainfall <- tibble()
 rainfall_path <- here("data", "rainfall")
 
 # Download the monthly rainfiles
+# Construct urls to download, using extracted station IDs
 sepa_base_url <- "https://www2.sepa.org.uk/rainfall"
 rain_csvs_urls <- str_c(
     sepa_base_url,
@@ -35,10 +36,16 @@ rain_csvs_urls <- str_c(
     "?csv=true&all=true"
 )
 
-# Extract the station IDs to use as filenames
+# Extract the same station IDs again to use as destination filenames
 destfiles <- file.path(
     rainfall_path,
-    str_c("monthly_", Edin_stations[["SEPA_id"]], ".csv")
+    str_c(
+        "monthly_",
+        Edin_stations[["SEPA_id"]],
+        "_",
+        Edin_stations[["short_name"]],
+        ".csv"
+    )
 )
 
 # Download to specified directory
